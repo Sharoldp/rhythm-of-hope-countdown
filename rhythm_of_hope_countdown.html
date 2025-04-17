@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhythm of Hope Countdown</title>
+  <style>
+    body {
+      background-color: #007847; /* Jamaican green */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #FFD700; /* Jamaican yellow */
+      font-family: 'Arial Black', sans-serif;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    #countdown {
+      background-color: #000000; /* Jamaican black */
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rhythm of Hope Concert - Showtime!</h1>
+  <div id="countdown">Loading...</div>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const eventTime = new Date("June 15, 2025 08:00:00 GMT+0100").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventTime - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "It's Showtime!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
